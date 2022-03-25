@@ -10,7 +10,7 @@ class Consumming_RSS
   def getRSSData
     URI.open(@url) do |rss|
       feed = RSS::Parser.parse(rss)
-      @title = feed.channel
+      @title = feed.channel.title
       feed.items.each do |item|
         @description = @description + item.title
         @description = @description + " แบ่งขั้น "
@@ -33,7 +33,7 @@ def rssUrlGet
   rssFeedUrl = gets.chomp
   url1 = Consumming_RSS.new(rssFeedUrl)
   url1.getRSSData
-#  url1.getTittle
+  url1.getTittle
 #  url1.getDescription
 #  url1.getURL
 end
