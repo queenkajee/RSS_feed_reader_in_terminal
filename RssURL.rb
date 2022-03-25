@@ -15,6 +15,7 @@ class Consumming_RSS
         @description = @description + item.title
         @description = @description + " ,\n "
       end
+      @url = feed.link
     end
   end
   def getTittle
