@@ -33,8 +33,8 @@ def rssUrlGet
   rssFeedUrl = gets.chomp
   url1 = Consumming_RSS.new(rssFeedUrl)
   url1.getRSSData
-  url1.getTittle
-#  url1.getDescription
+#  url1.getTittle
+  url1.getDescription
 #  url1.getURL
 end
 
