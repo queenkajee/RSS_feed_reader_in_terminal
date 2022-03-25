@@ -5,12 +5,16 @@ class Consumming_RSS
   attr_accessor :title, :description, :url
   def initialize(url)
     @url = url
+    @description = ""
   end
   def getRSSData
     URI.open(@url) do |rss|
       feed = RSS::Parser.parse(rss)
       @title = feed.channel
-      @description = feed.item
+      feed.items.each do |item|
+        @description = @description + item.title
+        @description = @description + " แบ่งขั้น "
+      end
     end
   end
   def getTittle
@@ -29,9 +33,9 @@ def rssUrlGet
   rssFeedUrl = gets.chomp
   url1 = Consumming_RSS.new(rssFeedUrl)
   url1.getRSSData
-  url1.getTittle
-  url1.getDescription
-  url1.getURL
+#  url1.getTittle
+#  url1.getDescription
+#  url1.getURL
 end
 
 rssUrlGet()
