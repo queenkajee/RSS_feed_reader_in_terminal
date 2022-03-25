@@ -13,7 +13,7 @@ class Consumming_RSS
       @title = feed.channel.title
       feed.items.each do |item|
         @description = @description + item.title
-        @description = @description + " แบ่งขั้น "
+        @description = @description + " ,\n "
       end
     end
   end
