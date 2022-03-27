@@ -2,10 +2,11 @@ require 'rss'
 require 'open-uri'
 
 class Consumming_RSS
-  attr_accessor :title, :description, :url
+  attr_accessor :title, :description, :url, :urlList
   def initialize(url)
     @url = url
     @description = ""
+    @urlList = ""
   end
   def getRSSData
     URI.open(@url) do |rss|
@@ -15,7 +16,11 @@ class Consumming_RSS
         @description = @description + item.title
         @description = @description + " ,\n "
       end
-      @url = feed.link
+      @urlList = feed.attr_reader :href
+#      feed.link.each do |thing|
+#        @urlList = @urlList + thing.title
+#        @urlList = @urlList + " แบ่งขั้นกันเถอะเรา  \n\n\n\n\n\n\n"
+#      end
     end
   end
   def getTittle
@@ -25,7 +30,7 @@ class Consumming_RSS
       puts @description
   end
   def getURL
-    puts @url
+    puts @urlList
   end
 end
 
